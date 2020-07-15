@@ -2,11 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yuchenfei98.github.io</id>
     <title>Mythbuster&apos;s Lab</title>
-    <updated>2020-07-15T12:10:06.006Z</updated>
+    <updated>2020-07-15T12:12:06.145Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yuchenfei98.github.io"/>
     <link rel="self" href="https://yuchenfei98.github.io/atom.xml"/>
-    <subtitle>理清思路</subtitle>
     <logo>https://yuchenfei98.github.io/images/avatar.png</logo>
     <icon>https://yuchenfei98.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Mythbuster&apos;s Lab</rights>
