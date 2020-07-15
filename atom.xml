@@ -2,13 +2,20 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yuchenfei98.github.io</id>
     <title>Mythbuster&apos;s Lab</title>
-    <updated>2020-07-15T14:29:31.672Z</updated>
+    <updated>2020-07-15T15:02:12.374Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yuchenfei98.github.io"/>
     <link rel="self" href="https://yuchenfei98.github.io/atom.xml"/>
     <logo>https://yuchenfei98.github.io/images/avatar.png</logo>
     <icon>https://yuchenfei98.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Mythbuster&apos;s Lab</rights>
+    <entry>
+        <title type="html"><![CDATA[Graphene nanoscrolls encapsulated TiO2 (B) nanowires for lithium storage]]></title>
+        <id>https://yuchenfei98.github.io/post/graphene-nanoscrolls-encapsulated-tio2-b-nanowires-for-lithium-storage/</id>
+        <link href="https://yuchenfei98.github.io/post/graphene-nanoscrolls-encapsulated-tio2-b-nanowires-for-lithium-storage/">
+        </link>
+        <updated>2020-07-15T15:00:17.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[一些光谱]]></title>
         <id>https://yuchenfei98.github.io/post/yi-xie-guang-pu/</id>
