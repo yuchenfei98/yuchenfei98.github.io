@@ -2457,3 +2457,11 @@ ul.links li:hover .bg {
     background-color: #aaa;
   }
 }
+
+    header {background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(https://s1.ax1x.com/2020/07/16/UBddGd.jpg);}
+    
+    
+    .valine {
+        display: none;
+      }
+    
