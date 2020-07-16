@@ -1,56 +1,300 @@
-<html>
-      <head>
-        <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
-        <meta charset="utf-8">
-        <meta name="referrer" content="never">
-        <title>Graphene nanoscrolls encapsulated TiO2 (B) nanowires for lithium storage | Mythbuster&#39;s Lab</title>
-        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.11.1/katex.min.css">
-        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://yuchenfei98.github.io/styles/main.css">
-          <script src="https://yuchenfei98.github.io/media/scripts/mdui.min.js"></script>
-        <link rel="stylesheet" href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css">
-        <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Ma+Shan+Zheng&display=swap" rel="stylesheet">
-        <script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
-        <script src="https://yuchenfei98.github.io/media/scripts/script.js"></script>
-        <script >hljs.initHighlightingOnLoad();</script>
-        
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="总体描述
+本文讲述了一种通过自卷曲过程来制备石墨烯紧密包裹的二氧化钛异质结纳米线。试验方法是通过Hummers来制备GO，再向其中加入1g二氧化钛粉末，制备异质纳米线，使用没有GO包裹的二氧化钛纳米线进行对照。
+该文认为，使GO包裹住二氧化..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://yuchenfei98.github.io/media/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://yuchenfei98.github.io/styles/main.css">
+    
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/rainbow.min.css">
+              
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+    <script src="https://yuchenfei98.github.io/media/js/clipboard.min.js"></script>
+    <link rel="stylesheet" href="https://yuchenfei98.github.io/media/css/live2d.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
+    <!-- 数学公式 -->
+    
+    <title>Mythbuster's Lab</title>
+    
+    <style>
+        .markdownIt-TOC {
+            padding-left: 2px;
+            width: 100%;
+        }
+        .markdownIt-TOC li{
+            padding-left: 2%;
+        }
+    </style>
+    
+</head>
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-172762072-1"></script>
+<body>
+    <!-- 响应式布局，针对PC端内容显示 -->
+    <div id="content">
+        <div class="nav-large">
+            <div class="row">
+                <div class="side"><head>
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://yuchenfei98.github.io/media/css/bootstrap.min.css">
+</head>
+
+
+<body>
+    
+
+
+
+    
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="https://yuchenfei98.github.io"
+                    style="font-size:21px">Mythbuster&#39;s Lab&nbsp;&nbsp;|&nbsp;&nbsp;</a>
+                <a class="navbar-brand" href=""
+                    style="font-size:15px;font-family:kaiti"></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse">
+                
+                <div class="search nav navbar-nav" style="margin-top:8px">
+                    <!-- <input type="text" class="search-input" placeholder="标题搜索(●'◡'●)" /> -->
+                    <input type="text" class="search-input" placeholder="标题搜索 ⚆_⚆ つ♡">
+                    <div class="search-results"></div>
+                </div>
+                
+                <div class="search nav navbar-nav">
+                <a title="text" onclick="document.getElementById('socialMenu').style.display='block'"><i><img class="social"
+                    src="https://yuchenfei98.github.io/media/images/social.png" alt=""></i></a>
+            </div>
+            <ul class="nav navbar-nav" style="float: right;margin-right:5%">
+                
+                
+                <li>
+                    <a href="/" style="color:white">
+                        首页
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/archives" style="color:white">
+                        归档
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="/tags" style="color:white">
+                        标签
+                    </a>
+                </li>
+                
+                
+                
+                  
+                  <li><img src="https://yuchenfei98.github.io/images/avatar.png?v=1594867448464" alt=""
+                class="menutopavatar"></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div id="socialMenu" class="modal">
+        <div class="animate">
+            <div class="socialContainer">
+                
+                
+                
+                
+                
+                
+            </div>
+            <div id="qq" style="display:none"></div>
+        </div>
+    </div>
+    <!-- 引入jQuery核心js文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <script>
+        var social = document.getElementById('socialMenu');
+        // 鼠标点击模型外区域关闭登录框
+        window.onclick = function (event) {
+            if (event.target == social) {
+                social.style.display = "none";
+            }
+        }
+    </script>
+    
+</body>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-172762072-1');
-</script>
+    //-------------------------------------------------搜索
+    // 获取搜索框、搜索按钮、清空搜索、结果输出对应的元素
+    var searchInput = document.querySelector('.search-input');
+    var searchResults = document.querySelector('.search-results');
 
-    </head>
-    <body class="mdui-theme-primary-purple mdui-theme-accent-purple">
-        <header class="index-img mdui-m-b-3"  style="background-image: url(https://s1.ax1x.com/2020/07/16/UBVcLV.jpg);" >
-                          <button class="mdui-btn  mdui-btn-icon mdui-btn-dense mdui-color-theme-500 mdui-ripple yinying mdui-m-t-1 mdui-m-l-1" mdui-menu="{target: '#demo-attr-cascade'}"><i class="mdui-icon material-icons">&#xe5d2;</i></button>
-                <ul class="mdui-menu" id="demo-attr-cascade">
-                
-                        <li class="mdui-menu-item">
-                          <a href="/" class="mdui-ripple">首页</a>
-                        </li>
-                
-                        <li class="mdui-menu-item">
-                          <a href="/archives" class="mdui-ripple">归档</a>
-                        </li>
-                
-                        <li class="mdui-menu-item">
-                          <a href="/tags" class="mdui-ripple">标签</a>
-                        </li>
-                
-                      </ul>
+    // 申明保存文章的标题、链接、内容的数组变量
+    var searchValue = '',
+        arrItems = [],
+        arrLinks = [],
+        arrTitles = [],
+        arrResults = [],
+        indexItem = [],
+        itemLength = 0;
+    var tmpDiv = document.createElement('div');
+    tmpDiv.className = 'result-item';
 
-        </header>
-        <div class="mdui-container post">
-                <div class="mdui-row">
-                        <div class="mdui-col-md-8 mdui-col-offset-md-2 ">
-                         <article class="mdui-shadow-10 mdui-p-a-2 post-list">
-                           <div class="mdui-typo-display-1 mdui-m-b-3">Graphene nanoscrolls encapsulated TiO2 (B) nanowires for lithium storage</div>
-                           <a  class="index-list-biaoqian ">2020-07-15</a>
-                           <div class="mdui-typo mdui-m-t-3 post-neirong"><h2 id="总体描述">总体描述</h2>
+    // ajax 的兼容写法
+    var xhr = new XMLHttpRequest() || new ActiveXObject('Microsoft.XMLHTTP');
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            xml = xhr.responseXML;
+            arrItems = xml.getElementsByTagName('entry');
+            itemLength = arrItems.length;
+            // 遍历并保存所有文章对应的标题、链接、内容到对应的数组中
+            // 同时过滤掉 HTML 标签
+            for (i = 0; i < itemLength; i++) {
+                var link = arrItems[i].getElementsByTagName('link')[0];
+                arrLinks[i] = link.getAttribute("href");
+                arrTitles[i] = arrItems[i].getElementsByTagName('title')[0].
+                childNodes[0].nodeValue.replace(/<.*?>/g, '');
+            }
+        }
+    }
+
+    // 开始获取根目录下 feed.xml 文件内的数据
+    xhr.open('get', '/atom.xml', true);
+    xhr.send();
+
+
+
+    // 输入框内容变化后就开始匹配，可以不用点按钮
+    // 经测试，onkeydown, onchange 等方法效果不太理想，
+    // 存在输入延迟等问题，最后发现触发 input 事件最理想，
+    // 并且可以处理中文输入法拼写的变化
+    searchInput.oninput = function () {
+        setTimeout(searchConfirm, 0);
+    }
+    searchInput.onfocus = function () {
+        searchResults.style.display = 'block';
+    }
+
+    function searchConfirm() {
+        if (searchInput.value == '') {
+            searchResults.style.display = 'none';
+        } else if (searchInput.value.search(/^\s+$/) >= 0) {
+            // 检测输入值全是空白的情况
+            searchInit();
+            var itemDiv = tmpDiv.cloneNode(true);
+            itemDiv.innerText = '请输入有效内容...';
+            searchResults.appendChild(itemDiv);
+        } else {
+            // 合法输入值的情况
+            searchInit();
+            searchValue = searchInput.value;
+            // 在标题、内容中查找
+            searchMatching(arrTitles, searchValue);
+        }
+    }
+
+    // 每次搜索完成后的初始化
+    function searchInit() {
+        arrResults = [];
+        indexItem = [];
+        searchResults.innerHTML = '';
+        searchResults.style.display = 'block';
+    }
+
+    function searchMatching(arr1, input) {
+        // 忽略输入大小写
+        input = new RegExp(input, 'i');
+        // 在所有文章标题、内容中匹配查询值
+        for (i = 0; i < itemLength; i++) {
+            if (arr1[i].search(input) !== -1) {
+                var arr = arr1;
+                indexItem.push(i); // 保存匹配值的索引
+                var indexContent = arr[i].search(input);
+                // 此时 input 为 RegExp 格式 /input/i，转换为原 input 字符串长度
+                var l = input.toString().length - 3;
+                var step = 10;
+
+                // 将匹配到内容的地方进行黄色标记，并包括周围一定数量的文本
+                arrResults.push(arr[i].slice(indexContent - step, indexContent));
+            }
+        }
+
+        // 输出总共匹配到的数目
+        var totalDiv = tmpDiv.cloneNode(true);
+        totalDiv.innerHTML = '<b>总匹配：' + indexItem.length + ' 项<hr></b>';
+        searchResults.appendChild(totalDiv);
+
+        // 未匹配到内容的情况
+        if (indexItem.length == 0) {
+            var itemDiv = tmpDiv.cloneNode(true);
+            itemDiv.innerText = '未匹配到内容...';
+            searchResults.appendChild(itemDiv);
+        }
+
+        // 将所有匹配内容进行组合
+        for (i = 0; i < arrResults.length; i++) {
+            var itemDiv = tmpDiv.cloneNode(true);
+            itemDiv.innerHTML = '<b>[' + arrTitles[indexItem[i]] +
+                ']</b><p>' + arrResults[i] + "</p><hr />";
+            itemDiv.setAttribute('onclick', 'changeHref(arrLinks[indexItem[' + i + ']])');
+            searchResults.appendChild(itemDiv);
+        }
+    }
+
+    function changeHref(href) {
+        location.href = href;
+    }
+
+    function showqq() {
+        var qq = document.getElementById("qq").innerHTML;
+        if (qq != '')
+            alert("博主的QQ联系方式为：" + qq);
+        else
+            alert("博主暂未设置QQ联系方式");
+    }
+</script></div>
+    
+    <div id="main" class="col-xs-12 col-sm-7" style="width:50%;margin-top:50px;left:27%">
+        <link rel="stylesheet" href="https://yuchenfei98.github.io/media/css/font-awesome.css">
+<style>
+
+</style>
+
+<body>
+    <div class="allcontent" id="postdetail">
+        <div class="postshow">
+            
+            <div class="postdetailimg" style="width:100%;overflow: hidden;display: none">
+                <img src="https://s1.ax1x.com/2020/07/16/UBVcLV.jpg" class="postimage" style="cursor:auto">
+            </div>
+            <div class="postinfo-detail">
+                <div class="postdate"><i class="fa fa-calendar"></i>2020-07-15</div>
+                <div class="poststatus postdate"><i class="fa fa-clock-o"></i> 4 min read</div>
+                <div class="posttag">
+                    
+                </div>
+            </div>
+            
+        <div id="texttitle" style="text-align: center">
+            <h2>Graphene nanoscrolls encapsulated TiO2 (B) nanowires for lithium storage</h2>
+            <!-- id 将作为查询条件 -->
+            <div id="pl" style="display:none">https://yuchenfei98.github.io/post/graphene-nanoscrolls-encapsulated-tio2-b-nanowires-for-lithium-storage/</div>
+            <div id="rootaddr" style="display:none">https://yuchenfei98.github.io</div>
+            <span id="hotnum" class="leancloud_visitors" data-flag-title="Graphene nanoscrolls encapsulated TiO2 (B) nanowires for lithium storage">
+                <h4 class="readercount">热度🔥: <i class="leancloud-visitors-count">loading...</i></h4>
+            </span>
+        </div>
+        <div class="text ">
+            <h2 id="总体描述">总体描述</h2>
 <p>本文讲述了一种通过自卷曲过程来制备石墨烯紧密包裹的二氧化钛异质结纳米线。试验方法是通过Hummers来制备GO，再向其中加入1g二氧化钛粉末，制备异质纳米线，使用没有GO包裹的二氧化钛纳米线进行对照。</p>
 <p>该文认为，使GO包裹住二氧化钛的力来自于Go纳米膜与反应过程中的中间产物之间的强吸附力。对于微观结构上的分析显示，纳米线可能是沿着二氧化钛的AB 面进行生长并具有多孔的特性（但这个面具体是哪个面我没查到）同时，异质结中的二氧化钛可能有着更宽的晶格间距。</p>
 <p>本文还通过拉曼光谱、FITR光谱等对材料的结构性能进行了分析，对材料的电学性能也进行了分析，由于这相关的分析技术我没学过，分析部分先略过了，等学完回来看。</p>
@@ -95,42 +339,69 @@
 <li>紧密封装的石墨烯纳米管有效地限制了衬底与活性材料之间的电隔离，从而稳定了复合材料的结构。 <!--为什么限制电隔离反而能够稳定复合材料的结构--></li>
 <li>纳米管结构促进了锂离子的输运，并减轻了快速锂化和脱盐过程中的体积变化，从而提高了共聚物的电化学性能。</li>
 </ol>
-</div>
-                              <div class="mdui-divider mdui-m-t-3"></div>
-                              <div class="mdui-row-xs-2 mdui-m-t-2">
-  <div class="mdui-col"> </div>
- <div class="mdui-col"><div class="mdui-text-right "><a href="https://yuchenfei98.github.io/post/yi-xie-guang-pu/">一些光谱</a></div> </div>
-                                </div>
-                                <div class="mdui-divider mdui-m-t-2"></div>
-   
- <script src="https://yuchenfei98.github.io/media/scripts/Valine.min.js"></script>
- <div class="comment"></div>
 
+        </div>
+        
+        
+        <div class="next-post">
+            下一篇
+            <a href="https://yuchenfei98.github.io/post/yi-xie-guang-pu/">
+                一些光谱
+            </a>
+        </div>
+        
+    </div>
+    </div>
+</body>
 <script>
-      new Valine({
-            el: '.comment',
-
-
-
-            path: window.location.pathname,
-            pageSize: 30,
-            avatar:'mm', 
-       })
-
-    </script> 
-<script>
-    if(window.location.hash){
-        var checkExist = setInterval(function() {
-           if ($(window.location.hash).length) {
-              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
-              clearInterval(checkExist);
-           }
-        }, 100);
+    var t_img; // 定时�?
+    var isLoad = true; // 控制变量
+    isImgLoad(function () {
+        // 加载完成
+        $('.postdetailimg').css("display", "block");
+    });
+    // 判断图片加载的函�?
+    function isImgLoad(callback) {
+        // 注意我的图片类名都是cover，因为我�?需要�?�理cover。其它图片可以不管�?
+        // 查找所有封面图，迭代�?�理
+        $('.postdetailimg').each(function () {
+            // 找到�?0就将isLoad设为false，并退出each
+            if (this.height === 0) {
+                isLoad = false;
+                return false;
+            }
+        });
+        // 为true，没有发现为0的。加载完�?
+        if (isLoad) {
+            clearTimeout(t_img); // 清除定时�?
+            // 回调函数
+            callback();
+            // 为false，因为找到了没有加载完成的图，将调用定时器递归
+        } else {
+            isLoad = true;
+            t_img = setTimeout(function () {
+                isImgLoad(callback); // 递归�?�?
+            }, 500); // 我这里�?�置的是500�?秒就�?描一次，�?以自己调�?
+        }
     }
+
+    //文章阅读热度
+    var pl = $("#pl").html();
+    var rootaddr = $("#rootaddr").html();
+    pl = pl.replace(rootaddr, "");
+    $("#hotnum").attr('id', pl);
 </script>
-                         </article>
-                 <div class="toc-container mdui-float-right">
-                <ul class="markdownIt-TOC">
+        <div name="comment" style="background: white">
+            <div class="commentcontainer">
+                
+                <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
+                
+            </div>
+        </div>
+    </div>
+     
+                <div class="toc-container">
+                    <ul class="markdownIt-TOC">
 <li>
 <ul>
 <li><a href="#%E6%80%BB%E4%BD%93%E6%8F%8F%E8%BF%B0">总体描述</a></li>
@@ -151,65 +422,306 @@
 </li>
 </ul>
 
-              </div>
-
-                        </div>
-                 </div>
-          
+    </div>
+    </div>
+    </div>
+    <div class="toggleContainer">
+        <div class="toggle">
+            <i class="fas fa-angle-double-up"></i>
         </div>
-        <script data-no-instant>
-    (function ($) {
-        $.extend({
-            adamsOverload: function () {
-                $.viewImage({
-                    'target'  : '.post-neirong img',
-                    'exclude' : '.vsmile-icons img , .song-links-item img',
-                    'delay'   : 300
-                });
+    </div>
+    <div id="bg">
+    </div>
+    <div id="bgchoice" style="display: none">default</div>
+    
+    <div id="bgurl" style="display:none">\media\images\custom-bgimage.jpg</div>
+       
+    </div>
+    <!-- 响应式布局，针对手机端内容显示 -->
+    <div class="nav-small">
+        <head>
+  <!-- 引入Bootstrap核心样式文件 -->
+  <link rel="stylesheet" href="https://yuchenfei98.github.io/media/css/bootstrap.min.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+          data-target="#barmenu" aria-expanded="false" id="barbutton">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="https://yuchenfei98.github.io">Mythbuster&#39;s Lab&nbsp;&nbsp;|</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="barmenu">
+        <ul class="nav navbar-nav">
+          
+          
+          <li>
+            <a href="/">
+              首页
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/archives">
+              归档
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/tags">
+              标签
+            </a>
+          </li>
+          
+          
+          
+          
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+
+  <!-- 引入jQuery核心js文件 -->
+  <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script>
+  var btstate = false;
+  var bt = $("#barbutton");
+  var bm = $("#barmenu");
+  bt.click(function(){
+    dropdown();
+  })
+  function dropdown(){
+    console.log(btstate);
+    //下拉
+    if(btstate==false){
+      bt.removeClass("collapsed");
+      bt.attr("aria-expanded","true");
+      bm.attr("aria-expanded","true")
+      bm.fadeIn(700);
+      btstate = true;
+    }
+    else{
+      bt.addClass("collapsed");
+      bt.attr("aria-expanded","false");
+      bm.removeClass("in");
+      bm.hide();
+      bm.attr("aria-expanded","false");
+      btstate = false;
+    }
+  }
+  </script> 
+</body>
+    <div style="margin-top:30px"></div>
+    <link rel="stylesheet" href="https://yuchenfei98.github.io/media/css/font-awesome.css">
+<style>
+
+</style>
+
+<body>
+    <div class="allcontent" id="postdetail">
+        <div class="postshow">
+            
+            <div class="postdetailimg" style="width:100%;overflow: hidden;display: none">
+                <img src="https://s1.ax1x.com/2020/07/16/UBVcLV.jpg" class="postimage" style="cursor:auto">
+            </div>
+            <div class="postinfo-detail">
+                <div class="postdate"><i class="fa fa-calendar"></i>2020-07-15</div>
+                <div class="poststatus postdate"><i class="fa fa-clock-o"></i> 4 min read</div>
+                <div class="posttag">
+                    
+                </div>
+            </div>
+            
+        <div id="texttitle" style="text-align: center">
+            <h2>Graphene nanoscrolls encapsulated TiO2 (B) nanowires for lithium storage</h2>
+            <!-- id 将作为查询条件 -->
+            <div id="pl" style="display:none">https://yuchenfei98.github.io/post/graphene-nanoscrolls-encapsulated-tio2-b-nanowires-for-lithium-storage/</div>
+            <div id="rootaddr" style="display:none">https://yuchenfei98.github.io</div>
+            <span id="hotnum" class="leancloud_visitors" data-flag-title="Graphene nanoscrolls encapsulated TiO2 (B) nanowires for lithium storage">
+                <h4 class="readercount">热度🔥: <i class="leancloud-visitors-count">loading...</i></h4>
+            </span>
+        </div>
+        <div class="text ">
+            <h2 id="总体描述">总体描述</h2>
+<p>本文讲述了一种通过自卷曲过程来制备石墨烯紧密包裹的二氧化钛异质结纳米线。试验方法是通过Hummers来制备GO，再向其中加入1g二氧化钛粉末，制备异质纳米线，使用没有GO包裹的二氧化钛纳米线进行对照。</p>
+<p>该文认为，使GO包裹住二氧化钛的力来自于Go纳米膜与反应过程中的中间产物之间的强吸附力。对于微观结构上的分析显示，纳米线可能是沿着二氧化钛的AB 面进行生长并具有多孔的特性（但这个面具体是哪个面我没查到）同时，异质结中的二氧化钛可能有着更宽的晶格间距。</p>
+<p>本文还通过拉曼光谱、FITR光谱等对材料的结构性能进行了分析，对材料的电学性能也进行了分析，由于这相关的分析技术我没学过，分析部分先略过了，等学完回来看。</p>
+<h2 id="简介">简介</h2>
+<p>提出一个存在的问题是TiO2低电导率以及纳米结构的自发聚集（可能是容易聚团不容易展开？）</p>
+<h2 id="实验部分">实验部分</h2>
+<h3 id="制备方法">制备方法</h3>
+<p>使用一种改进过的Hummers方法。</p>
+<h4 id="go的制备">GO的制备</h4>
+<ol>
+<li>将3g石墨粉和1.5g硝酸钠放入一个1000mL的烧瓶中，再将120毫升浓硫酸慢慢滴入冰浴中的烧瓶中</li>
+<li>30分钟内加入9克高锰酸钾并搅拌，之后再搅拌4小时后</li>
+<li>在35℃水浴中连续搅拌1 h后，将反应温度提高到95℃，并保持30 min</li>
+<li>将过量的15ml过氧化氢(30 wt%)倒入混合物中，制成亮黄色溶液</li>
+<li>用过量的去离子水(DI)反复离心至中性(pH = 7)，得到氧化石墨<!--这里的清洗不懂是怎么清洗的。。。--></li>
+<li>之后将70gGO加入20g去离子水使用超声清洗一小时，使其均匀分散</li>
+</ol>
+<h4 id="异质纳米线的制备">异质纳米线的制备</h4>
+<ol>
+<li>
+<p>加入商品TiO2粉1 g(锐钛酶，40-100 nm)，室温搅拌4 h</p>
+</li>
+<li>
+<p>将30 mL 10 mol/L NaOH水溶液加入混合物中，然后转移到100mL的铁氟龙内衬不锈钢高压釜中，在150℃下加热72 h</p>
+</li>
+<li>
+<p>将获得的悬浮液用0.1 M HCl溶液搅拌24小时，在400度的氮气中退火4小时，制备石墨烯纳米管，然后用DI洗涤至中性(pH 7)，在80℃干燥，然后包覆TiO2 (B)纳米线。</p>
+</li>
+</ol>
+<h3 id="样品表征">样品表征</h3>
+<p>使用了XRD、HRTEM、Raman、FTIR、CV</p>
+<h2 id="结果分析及讨论">结果分析及讨论</h2>
+<ol>
+<li>文章认为，异质纳米线形成的驱动力是石墨烯纳米膜与反应中间产物之间的粘力，但中间产物并没有给出</li>
+<li>文章认为纳米线沿着TiO2的ab平面生长，同时与纯的TiO2相比有着更大的晶格间距</li>
+<li><u>拉曼这一段没怎么看懂，不懂如何通过个频段的位移得出键能一级结构的</u></li>
+<li>通过循环伏安法（CV）对材料的电学性能进行了一些测试，文章认为可以通过减少bc轴通道的数量来提高锂离子的结合/脱出率 <!--不是特别理解这个思路--></li>
+<li>TiO2 (B)表面和电解质之间的反应导致了可能的电容损失，而不是吸附在纳米结构中的Li离子所导致的</li>
+<li>文章推测，石墨烯纳米管有效地限制了TiO2 (B)纳米线表面羟基与电解质的副反应，从而降低了不可逆电容损失</li>
+<li>在复合材料中封装石墨烯纳米管对提高复合材料的速率性能起着至关重要的作用</li>
+<li>TiO2 (B)纳米线以外的管状石墨烯纳米管的厚度取决于初始石墨烯层和钛酸盐表面悬键的驱动力。</li>
+<li>紧密封装的石墨烯纳米管有效地限制了衬底与活性材料之间的电隔离，从而稳定了复合材料的结构。 <!--为什么限制电隔离反而能够稳定复合材料的结构--></li>
+<li>纳米管结构促进了锂离子的输运，并减轻了快速锂化和脱盐过程中的体积变化，从而提高了共聚物的电化学性能。</li>
+</ol>
+
+        </div>
+        
+        
+        <div class="next-post">
+            下一篇
+            <a href="https://yuchenfei98.github.io/post/yi-xie-guang-pu/">
+                一些光谱
+            </a>
+        </div>
+        
+    </div>
+    </div>
+</body>
+<script>
+    var t_img; // 定时�?
+    var isLoad = true; // 控制变量
+    isImgLoad(function () {
+        // 加载完成
+        $('.postdetailimg').css("display", "block");
+    });
+    // 判断图片加载的函�?
+    function isImgLoad(callback) {
+        // 注意我的图片类名都是cover，因为我�?需要�?�理cover。其它图片可以不管�?
+        // 查找所有封面图，迭代�?�理
+        $('.postdetailimg').each(function () {
+            // 找到�?0就将isLoad设为false，并退出each
+            if (this.height === 0) {
+                isLoad = false;
+                return false;
             }
         });
-    })(jQuery);
-    jQuery.adamsOverload();
+        // 为true，没有发现为0的。加载完�?
+        if (isLoad) {
+            clearTimeout(t_img); // 清除定时�?
+            // 回调函数
+            callback();
+            // 为false，因为找到了没有加载完成的图，将调用定时器递归
+        } else {
+            isLoad = true;
+            t_img = setTimeout(function () {
+                isImgLoad(callback); // 递归�?�?
+            }, 500); // 我这里�?�置的是500�?秒就�?描一次，�?以自己调�?
+        }
+    }
+
+    //文章阅读热度
+    var pl = $("#pl").html();
+    var rootaddr = $("#rootaddr").html();
+    pl = pl.replace(rootaddr, "");
+    $("#hotnum").attr('id', pl);
 </script>
-        <footer class="footer mdui-m-t-5 mdui-text-center">
-               <nav class="social-links">
-                      <ul>
-                      
-                            
-                           
-                            
-                           
-                            
-                           
-                            	
-                        <li class="social-link"><a href="https://www.zhihu.com/people/auir-fei" target="_blank"><i class="iconfont icon-zhihu"></i></a></li>
-                         
-                           
-                            	
-                        <li class="social-link"><a href="https://www.facebook.com/aiur.fey/" target="_blank"><i class="iconfont icon-facebook"></i></a></li>
-                         
-                           
-                            
-                           
-                            
-                           
-                            
-                           
-                            	
-                        <li class="social-link"><a href="https://www.instagram.com/harold_fey/" target="_blank"><i class="iconfont icon-instagram"></i></a></li>
-                         
-                           
-                            
-                           
-                            
-                           
-                            
-                           
-                      </ul>
-                    </nav>
-                  <div class="copyright">
-                      <p>Stand Alone Complex</p>
-                  </div>
-              </footer>
+    <div name="comment" style="background: white;margin-top:100px">
+        <div class="commentcontainer">
+            
+            <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
+            
+        </div>
+    </div>
+    </div>
+    <div id="landlord">
+        <div class="message" style="opacity:0"></div>
+        <canvas id="live2d" width="240" height="250" class="live2d"></canvas>
+    </div>
+    <div id="codeCopyText" style="display: none">代码复制成功了哦</div>
+    <div id="domainname" style="display:none">https://yuchenfei98.github.io</div>
     </body>
-</html>
+    <script src="https://yuchenfei98.github.io/media/js/post.js"></script>
+    <script>
+        //寻找所有code标签，加复制按钮鸭！(行内代码除外)
+        var codes = document.getElementsByTagName('code');
+        if (codes.length) {
+            for (var i = 0; i < codes.length; i++) {
+                //高度/行高=文本行数
+                // var rowNum=Math.round(codes[i].height()/parseFloat(codes[i].css('line-height')));
+                // console.log("当前有"+rowNum+"行");
+                var code_id = "code_id_" + i;
+                codes[i].setAttribute("id", code_id);
+                var ci = "#" + code_id;
+                var codedot = $(ci);
+                var rowNum = Math.round(codedot.height() / parseFloat(codedot.css('line-height')));
+                if (rowNum <= 1) continue;
+                var btn = document.createElement("button");
+                btn.setAttribute("class", "copybt");
+                btn.setAttribute("data-clipboard-target", "#" + code_id);
+                btn.innerHTML = '复制代码';
+                codes[i].parentNode.insertBefore(btn, codes[i]);
+            }
+        };
+        var cop = new ClipboardJS('.copybt');
+        var codeCopyText = $("#codeCopyText").html();
+        cop.on('success', function (e) {
+            alert(codeCopyText);
+            e.clearSelection();
+        });
+        cop.on('error', function (e) {
+            alert("矮油，复制失败了...手动复制吧勇士！");
+            e.clearSelection();
+        });
+    </script>
+    
+<script>
+$(function () {
+    $('.toggleContainer').click(function(){$('html,body').animate({scrollTop: '0px'}, 800);});
+	$(window).scroll(function() {
+        var st = $(window).scrollTop();
+        if(st > 30){
+            $(".toggleContainer").fadeIn(400);
+        }else{
+            $(".toggleContainer").fadeOut(100);
+        }
+	});
+});
+</script>
+
+<script>
+        var bgchoice=$('#bgchoice').html();
+        var bg = $('#bg');
+        var bgurl = document.getElementById("bgurl").innerHTML;
+        if(bgchoice=='default')
+            for (var i = 0; i < 3; i++)
+                bgurl = bgurl.replace("\\", "/");
+        bg.css("background", "url('" + bgurl + "')");
+</script>
