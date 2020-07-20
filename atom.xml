@@ -2,13 +2,20 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yuchenfei98.github.io</id>
     <title>Mythbuster&apos;s Lab</title>
-    <updated>2020-07-17T01:58:47.472Z</updated>
+    <updated>2020-07-20T09:40:16.092Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yuchenfei98.github.io"/>
     <link rel="self" href="https://yuchenfei98.github.io/atom.xml"/>
     <logo>https://yuchenfei98.github.io/images/avatar.png</logo>
     <icon>https://yuchenfei98.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Mythbuster&apos;s Lab</rights>
+    <entry>
+        <title type="html"><![CDATA[Two step method for preparing TiO2/Ag/rGO heterogeneous nanocomposites and its photocatalytic activity under visible light irradiation]]></title>
+        <id>https://yuchenfei98.github.io/post/two-step-method-for-preparing-tio2agrgo-heterogeneous-nanocomposites-and-its-photocatalytic-activity-under-visible-light-irradiation/</id>
+        <link href="https://yuchenfei98.github.io/post/two-step-method-for-preparing-tio2agrgo-heterogeneous-nanocomposites-and-its-photocatalytic-activity-under-visible-light-irradiation/">
+        </link>
+        <updated>2020-07-20T09:37:11.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Grant和Mythbusters]]></title>
         <id>https://yuchenfei98.github.io/post/grant-he-mythbusters/</id>
