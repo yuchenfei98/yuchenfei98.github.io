@@ -1,109 +1,99 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" >
+
 <title>Graphene nanoscrolls encapsulated TiO2 (B) nanowires for lithium storage | Mythbuster&#39;s Lab</title>
-<link rel="shortcut icon" href="https://yuchenfei98.github.io/favicon.ico?v=1630513031498">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://yuchenfei98.github.io/favicon.ico?v=1630513355768">
 <link rel="stylesheet" href="https://yuchenfei98.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="Graphene nanoscrolls encapsulated TiO2 (B) nanowires for lithium storage | Mythbuster&#39;s Lab - Atom Feed" href="https://yuchenfei98.github.io/atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-172762072-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'UA-172762072-1');
-</script>
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
 
 
     <meta name="description" content="总体描述
 本文讲述了一种通过自卷曲过程来制备石墨烯紧密包裹的二氧化钛异质结纳米线。试验方法是通过Hummers来制备GO，再向其中加入1g二氧化钛粉末，制备异质纳米线，使用没有GO包裹的二氧化钛纳米线进行对照。
 该文认为，使GO包裹住二氧化..." />
     <meta name="keywords" content="" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://yuchenfei98.github.io">
-  <img class="avatar" src="https://yuchenfei98.github.io/images/avatar.png?v=1630513031498" alt="">
-  </a>
-  <h1 class="site-title">
-    Mythbuster&#39;s Lab
-  </h1>
-  <p class="site-description">
-    
-  </p>
-  <div class="menu-container">
-    
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://yuchenfei98.github.io">
+        <img src="https://yuchenfei98.github.io/images/avatar.png?v=1630513355768" class="site-logo">
+        <h1 class="site-title">Mythbuster&#39;s Lab</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
       
-        <a href="/" class="menu">
-          首页
-        </a>
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
       
-    
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
       
-        <a href="/archives" class="menu">
-          归档
-        </a>
+        
+          <a href="https://yuchenfei98.github.io/post/about" class="site-nav">
+            关于我
+          </a>
+        
       
-    
-      
-        <a href="https://yuchenfei98.github.io/post/about" class="menu">
-          关于我
-        </a>
-      
-    
+    </div>
   </div>
-  <div class="social-container">
-    
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
       
-    
+        
       
-    
+        
       
-    
+        
       
-        <a href="https://www.zhihu.com/people/auir-fei" target="_blank">
-          <i class="ri-zhihu-line"></i>
-        </a>
+        
       
-    
+        
       
-        <a href="https://www.facebook.com/aiur.fey/" target="_blank">
-          <i class="ri-facebook-line"></i>
-        </a>
+    </div>
+    <div class="site-description">
       
-    
+    </div>
+    <div class="site-footer">
+      Stand Alone Complex | <a class="rss" href="https://yuchenfei98.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
 </div>
 
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              Graphene nanoscrolls encapsulated TiO2 (B) nanowires for lithium storage
-            </h2>
-            <div class="post-info">
-              <span>
-                2020-07-15
-              </span>
-              <span>
-                4 min read
-              </span>
-              
-            </div>
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Graphene nanoscrolls encapsulated TiO2 (B) nanowires for lithium storage</h2>
+            <div class="post-date">2020-07-15</div>
             
-              <img class="post-feature-image" src="https://s1.ax1x.com/2020/07/16/UBVcLV.jpg" alt="">
+              <div class="feature-container" style="background-image: url('https://s1.ax1x.com/2020/07/16/UBVcLV.jpg')">
+              </div>
             
-            <div class="post-content-wrapper">
-              <div class="post-content">
-                <h2 id="总体描述">总体描述</h2>
+            <div class="post-content" v-pre>
+              <h2 id="总体描述">总体描述</h2>
 <p>本文讲述了一种通过自卷曲过程来制备石墨烯紧密包裹的二氧化钛异质结纳米线。试验方法是通过Hummers来制备GO，再向其中加入1g二氧化钛粉末，制备异质纳米线，使用没有GO包裹的二氧化钛纳米线进行对照。</p>
 <p>该文认为，使GO包裹住二氧化钛的力来自于Go纳米膜与反应过程中的中间产物之间的强吸附力。对于微观结构上的分析显示，纳米线可能是沿着二氧化钛的AB 面进行生长并具有多孔的特性（但这个面具体是哪个面我没查到）同时，异质结中的二氧化钛可能有着更宽的晶格间距。</p>
 <p>本文还通过拉曼光谱、FITR光谱等对材料的结构性能进行了分析，对材料的电学性能也进行了分析，由于这相关的分析技术我没学过，分析部分先略过了，等学完回来看。</p>
@@ -149,96 +139,45 @@
 <li>纳米管结构促进了锂离子的输运，并减轻了快速锂化和脱盐过程中的体积变化，从而提高了共聚物的电化学性能。</li>
 </ol>
 
-              </div>
-              <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E6%80%BB%E4%BD%93%E6%8F%8F%E8%BF%B0">总体描述</a></li>
-<li><a href="#%E7%AE%80%E4%BB%8B">简介</a></li>
-<li><a href="#%E5%AE%9E%E9%AA%8C%E9%83%A8%E5%88%86">实验部分</a>
-<ul>
-<li><a href="#%E5%88%B6%E5%A4%87%E6%96%B9%E6%B3%95">制备方法</a>
-<ul>
-<li><a href="#go%E7%9A%84%E5%88%B6%E5%A4%87">GO的制备</a></li>
-<li><a href="#%E5%BC%82%E8%B4%A8%E7%BA%B3%E7%B1%B3%E7%BA%BF%E7%9A%84%E5%88%B6%E5%A4%87">异质纳米线的制备</a></li>
-</ul>
-</li>
-<li><a href="#%E6%A0%B7%E5%93%81%E8%A1%A8%E5%BE%81">样品表征</a></li>
-</ul>
-</li>
-<li><a href="#%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90%E5%8F%8A%E8%AE%A8%E8%AE%BA">结果分析及讨论</a></li>
-</ul>
-</li>
-</ul>
-
-              </div>
             </div>
-          </article>
-        </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://yuchenfei98.github.io/post/yi-xie-guang-pu/">
+                  <h3 class="post-title">
+                    一些光谱
+                  </h3>
+                </a>
+              </div>
+            
 
-        
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://yuchenfei98.github.io/post/yi-xie-guang-pu/">
-              <h3 class="post-title">
-                一些光谱
-              </h3>
-            </a>
+            
+
           </div>
-        
 
-        
-
-        <div class="site-footer">
-  Stand Alone Complex
-  <a class="rss" href="https://yuchenfei98.github.io/atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
-</div>
-
+        </div>
       </div>
     </div>
 
-    <script>
-      hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
 
-      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+AOS.init();
 
-      // This should probably be throttled.
-      // Especially because it triggers during smooth scrolling.
-      // https://lodash.com/docs/4.17.10#throttle
-      // You could do like...
-      // window.addEventListener("scroll", () => {
-      //    _.throttle(doThatStuff, 100);
-      // });
-      // Only not doing it here to keep this Pen dependency-free.
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
 
-      window.addEventListener("scroll", event => {
-        let fromTop = window.scrollY;
+</script>
 
-        mainNavLinks.forEach((link, index) => {
-          let section = document.getElementById(decodeURI(link.hash).substring(1));
-          let nextSection = null
-          if (mainNavLinks[index + 1]) {
-            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-          }
-          if (section.offsetTop <= fromTop) {
-            if (nextSection) {
-              if (nextSection.offsetTop > fromTop) {
-                link.classList.add("current");
-              } else {
-                link.classList.remove("current");    
-              }
-            } else {
-              link.classList.add("current");
-            }
-          } else {
-            link.classList.remove("current");
-          }
-        });
-      });
 
-    </script>
+
+
+
+
   </body>
 </html>

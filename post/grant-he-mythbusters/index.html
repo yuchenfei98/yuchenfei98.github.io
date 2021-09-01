@@ -1,23 +1,21 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" >
+
 <title>Grant和Mythbusters | Mythbuster&#39;s Lab</title>
-<link rel="shortcut icon" href="https://yuchenfei98.github.io/favicon.ico?v=1630513031498">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://yuchenfei98.github.io/favicon.ico?v=1630513355768">
 <link rel="stylesheet" href="https://yuchenfei98.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="Grant和Mythbusters | Mythbuster&#39;s Lab - Atom Feed" href="https://yuchenfei98.github.io/atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-172762072-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'UA-172762072-1');
-</script>
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
 
 
     <meta name="description" content="Grant之死
@@ -28,90 +26,78 @@ Grant Imahara, Engineer Who Co-Hosted ‘MythBusters,’ Dies at 49
 
 说实话，这件事有点离谱，在我的印象里，Gr..." />
     <meta name="keywords" content="生活" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://yuchenfei98.github.io">
-  <img class="avatar" src="https://yuchenfei98.github.io/images/avatar.png?v=1630513031498" alt="">
-  </a>
-  <h1 class="site-title">
-    Mythbuster&#39;s Lab
-  </h1>
-  <p class="site-description">
-    
-  </p>
-  <div class="menu-container">
-    
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://yuchenfei98.github.io">
+        <img src="https://yuchenfei98.github.io/images/avatar.png?v=1630513355768" class="site-logo">
+        <h1 class="site-title">Mythbuster&#39;s Lab</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
       
-        <a href="/" class="menu">
-          首页
-        </a>
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
       
-    
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
       
-        <a href="/archives" class="menu">
-          归档
-        </a>
+        
+          <a href="https://yuchenfei98.github.io/post/about" class="site-nav">
+            关于我
+          </a>
+        
       
-    
-      
-        <a href="https://yuchenfei98.github.io/post/about" class="menu">
-          关于我
-        </a>
-      
-    
+    </div>
   </div>
-  <div class="social-container">
-    
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
       
-    
+        
       
-    
+        
       
-    
+        
       
-        <a href="https://www.zhihu.com/people/auir-fei" target="_blank">
-          <i class="ri-zhihu-line"></i>
-        </a>
+        
       
-    
+        
       
-        <a href="https://www.facebook.com/aiur.fey/" target="_blank">
-          <i class="ri-facebook-line"></i>
-        </a>
+    </div>
+    <div class="site-description">
       
-    
+    </div>
+    <div class="site-footer">
+      Stand Alone Complex | <a class="rss" href="https://yuchenfei98.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
 </div>
 
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              Grant和Mythbusters
-            </h2>
-            <div class="post-info">
-              <span>
-                2020-07-17
-              </span>
-              <span>
-                4 min read
-              </span>
-              
-                <a href="https://yuchenfei98.github.io/tag/YpnkChw9I/" class="post-tag">
-                  # 生活
-                </a>
-              
-            </div>
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Grant和Mythbusters</h2>
+            <div class="post-date">2020-07-17</div>
             
-              <img class="post-feature-image" src="https://s1.ax1x.com/2020/07/17/UsMIJ0.jpg" alt="">
+              <div class="feature-container" style="background-image: url('https://s1.ax1x.com/2020/07/17/UsMIJ0.jpg')">
+              </div>
             
-            <div class="post-content-wrapper">
-              <div class="post-content">
-                <h2 id="grant之死">Grant之死</h2>
+            <div class="post-content" v-pre>
+              <h2 id="grant之死">Grant之死</h2>
 <p>在我昨天早上打开手机的时候，一条推送显示了出来</p>
 <blockquote>
 <p>Grant Imahara, Engineer Who Co-Hosted ‘MythBusters,’ Dies at 49</p>
@@ -170,87 +156,53 @@ Grant Imahara, Engineer Who Co-Hosted ‘MythBusters,’ Dies at 49
 <p>Grant是一位优秀的工程师，他和流言终结者的同事们对我有着很大的影响，我很遗憾和痛心他的离世，愿他安息。</p>
 <p><em>谨以此文纪念Grant Imahara</em></p>
 
-              </div>
-              <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#grant%E4%B9%8B%E6%AD%BB">Grant之死</a></li>
-<li><a href="#%E8%B0%81%E6%98%AFgrant">谁是Grant</a></li>
-<li><a href="#mythbusters">Mythbusters</a></li>
-<li><a href="#%E5%BD%B1%E5%93%8D">影响</a></li>
-<li><a href="#%E7%BB%93%E8%AF%AD">结语</a></li>
-</ul>
-</li>
-</ul>
-
-              </div>
             </div>
-          </article>
-        </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://yuchenfei98.github.io/tag/YpnkChw9I/" class="tag">
+                    生活
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://yuchenfei98.github.io/post/graphene-nanoscrolls-encapsulated-tio2-b-nanowires-for-lithium-storage/">
+                  <h3 class="post-title">
+                    Graphene nanoscrolls encapsulated TiO2 (B) nanowires for lithium storage
+                  </h3>
+                </a>
+              </div>
+            
 
-        
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://yuchenfei98.github.io/post/graphene-nanoscrolls-encapsulated-tio2-b-nanowires-for-lithium-storage/">
-              <h3 class="post-title">
-                Graphene nanoscrolls encapsulated TiO2 (B) nanowires for lithium storage
-              </h3>
-            </a>
+            
+
           </div>
-        
 
-        
-
-        <div class="site-footer">
-  Stand Alone Complex
-  <a class="rss" href="https://yuchenfei98.github.io/atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
-</div>
-
+        </div>
       </div>
     </div>
 
-    <script>
-      hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
 
-      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+AOS.init();
 
-      // This should probably be throttled.
-      // Especially because it triggers during smooth scrolling.
-      // https://lodash.com/docs/4.17.10#throttle
-      // You could do like...
-      // window.addEventListener("scroll", () => {
-      //    _.throttle(doThatStuff, 100);
-      // });
-      // Only not doing it here to keep this Pen dependency-free.
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
 
-      window.addEventListener("scroll", event => {
-        let fromTop = window.scrollY;
+</script>
 
-        mainNavLinks.forEach((link, index) => {
-          let section = document.getElementById(decodeURI(link.hash).substring(1));
-          let nextSection = null
-          if (mainNavLinks[index + 1]) {
-            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-          }
-          if (section.offsetTop <= fromTop) {
-            if (nextSection) {
-              if (nextSection.offsetTop > fromTop) {
-                link.classList.add("current");
-              } else {
-                link.classList.remove("current");    
-              }
-            } else {
-              link.classList.add("current");
-            }
-          } else {
-            link.classList.remove("current");
-          }
-        });
-      });
 
-    </script>
+
+
+
+
   </body>
 </html>
