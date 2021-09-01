@@ -1,0 +1,845 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title> 认识UVM的结构 | Mythbuster&#39;s Lab</title>
+<link rel="shortcut icon" href="https://yuchenfei98.github.io/favicon.ico?v=1630513031498">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://yuchenfei98.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title=" 认识UVM的结构 | Mythbuster&#39;s Lab - Atom Feed" href="https://yuchenfei98.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-172762072-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-172762072-1');
+</script>
+
+
+    <meta name="description" content="
+本文学习资料引用自https://colorlesscube.com/uvm-guide-for-beginners/chapter-2-defining-the-verification-environment/
+
+一、DUT介绍
+DU..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://yuchenfei98.github.io">
+  <img class="avatar" src="https://yuchenfei98.github.io/images/avatar.png?v=1630513031498" alt="">
+  </a>
+  <h1 class="site-title">
+    Mythbuster&#39;s Lab
+  </h1>
+  <p class="site-description">
+    
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="https://yuchenfei98.github.io/post/about" class="menu">
+          关于我
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+        <a href="https://www.zhihu.com/people/auir-fei" target="_blank">
+          <i class="ri-zhihu-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.facebook.com/aiur.fey/" target="_blank">
+          <i class="ri-facebook-line"></i>
+        </a>
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+               认识UVM的结构
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-09-02
+              </span>
+              <span>
+                18 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <blockquote>
+<p>本文学习资料引用自https://colorlesscube.com/uvm-guide-for-beginners/chapter-2-defining-the-verification-environment/</p>
+</blockquote>
+<h2 id="一-dut介绍">一、DUT介绍</h2>
+<p>DUT是一个简单的加法器，时序图和状态机见图。具体作用是两个通道ina和inb，将他们相加再通过out输出，输入的信号采样到en_i,输出的信号采样到en_o。</p>
+<figure data-type="image" tabindex="1"><img src="https://img-blog.csdnimg.cn/20210829234407908.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBASGFyb2xkIEZleQ==,size_15,color_FFFFFF,t_70,g_se,x_16" alt="img" loading="lazy"></figure>
+<img src="http://colorlesscube.com/wp-content/uploads/ch2-dut_state_machine.png" alt="DUT State Machine" style="zoom:50%;" />
+<img src="http://colorlesscube.com/wp-content/uploads/ch2-dut_timing_diagram.png" alt="DUT Timing Diagram" style="zoom:50%;" />
+<h2 id="二-验证环境">二、验证环境</h2>
+<figure data-type="image" tabindex="2"><img src="http://colorlesscube.com/wp-content/uploads/ch3-uvm_tb_typical.png" alt="Typical UVM testbench" loading="lazy"></figure>
+<h2 id="三-top-block">三、Top block!</h2>
+<p>在正常的开发中，DUT的开发是与TB的开发分开的，因此会有两个部分来连接他们，包括</p>
+<ol>
+<li>TB的顶层模块（Top block ）</li>
+<li>虚拟接口（virtual interface）</li>
+</ol>
+<p>顶层模块例化DUT和TB，而接口则负责连接他们。</p>
+<p>一个典型的接口如下,可以看到接口部分只例化了名称，但没有标明具体的输入输出。</p>
+<pre><code class="language-verilog">interface simpleadder_if;
+     logic    sig_clock;
+     logic    sig_ina;
+     logic    sig_inb;
+     logic    sig_en_i;
+     logic    sig_out;
+     logic    sig_en_o;
+endinterface: simpleadder_if
+</code></pre>
+<p>顶层模块的任务包括：</p>
+<ol>
+<li>
+<p>将DUT连接到测试文件</p>
+</li>
+<li>
+<p>生成DUT测试需要的时钟</p>
+</li>
+<li>
+<p>将interface在UVM factory中注册</p>
+</li>
+<li>
+<p>运行测试</p>
+<pre><code class="language-verilog">`include &quot;simpleadder_pkg.sv&quot;
+`include &quot;simpleadder.v&quot;
+`include &quot;simpleadder_if.sv&quot;//引用所需要的包文件、头文件以及接口文件
+ 
+module simpleadder_tb_top;
+     import uvm_pkg::*;
+ 
+     //Interface declaration 例化接口
+     simpleadder_if vif();
+ 
+     //Connects the Interface to the DUT 将接口与DUT连接
+     simpleadder dut(vif.sig_clock,
+                     vif.sig_en_i,
+                     vif.sig_ina,
+                     vif.sig_inb,
+                     vif.sig_en_o,
+                     vif.sig_out);
+     initial begin
+          //Registers the Interface in the configuration block
+          //so that other blocks can use it 注册
+          uvm_resource_db#(virtual simpleadder_if)::set(.scope(&quot;ifs&quot;), .name(&quot;simpleadder_if&quot;), .val(vif));
+ 
+          //Executes the test
+          run_test();
+     end
+ 
+     //Variable initialization
+     initial begin
+          vif.sig_clock = 1'b1;
+     end
+ 
+     //Clock generation
+     always
+          #5 vif.sig_clock = ~vif.sig_clock;
+     endmodule
+</code></pre>
+</li>
+</ol>
+<figure data-type="image" tabindex="3"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动" loading="lazy"></figure>
+<h2 id="四-sequences-and-sequencers">四、Sequences and sequencers</h2>
+<p>验证DUT的功能时，需要产生一连串的数据。这就产生了transaction这个类。</p>
+<h3 id="transaction">transaction</h3>
+<p>transaction是一个由<em>uvm_transaction</em> 或者<em>uvm_sequence_item</em>延伸出的类，其中包含了需要传给DUT的数据。</p>
+<p>transaction是验证结构中所使用的最小的数据单位，包括数据类型、变量和方法，优秀的设计可以让transaction多次复用。</p>
+<p>在有了基本的数据包之后，验证环境将需要生成它们的集合并准备好将它们发送给驱动程序。这是序列（sequence）的工作。sequence相当于一个弹夹，其延伸于 <em>uvm_sequence</em>，将trans形成有序集合发送给sequencer，而sequencer的任务是将sequence形成的数据包发送给driver。</p>
+<figure data-type="image" tabindex="4"><img src="https://colorlesscube.com/wp-content/uploads/ch5-uvm_tb_sequence.png" alt="img" loading="lazy"></figure>
+<p>一个简单的trans如下</p>
+<pre><code class="language-verilog">class simpleadder_transaction extends uvm_sequence_item;
+    rand bit[1:0] ina;//随机化输入的a、b数据
+    rand bit[1:0] inb;//
+     bit[2:0] out;
+ 
+     function new(string name = &quot;&quot;);
+          super.new(name);
+     endfunction: new
+ 
+    `uvm_object_utils_begin(simpleadder_transaction)//注册
+    `uvm_field_int(ina, UVM_ALL_ON)//使用uvm_field宏进行注册
+     `uvm_field_int(inb, UVM_ALL_ON)
+     `uvm_field_int(out, UVM_ALL_ON)
+     `uvm_object_utils_end
+endclass: simpleadder_transaction
+</code></pre>
+<p>关于uvm_field</p>
+<pre><code class="language-verilog">`define uvm_field_int(ARG,FLAG)
+`define uvm_field_real(ARG,FLAG)
+`define uvm_field_enum(T,ARG,FLAG)
+`define uvm_field_object(ARG,FLAG)
+`define uvm_field_event(ARG,FLAG)
+`define uvm_field_string(ARG,FLAG)
+上述几个宏分别用于要注册的字段是整数、实数、枚举类型、直接或间接派生自uvm_object的类型、事件及字符串类型。这里除了枚举类型外，都是两个参数。对于枚举类型来说，需要有三个参数。假如有枚举类型tb_bool_e，同时有变量tb_flag，那么在使用field automation机制时应该使用如下方式实现：
+typedef enum {TB_TRUE, TB_FALSE} tb_bool_e;
+…
+tb_bool_e tb_flag;
+…
+`uvm_field_enum(tb_bool_e, tb_flag, UVM_ALL_ON)
+</code></pre>
+<p>而使用trans的好处在于，如果我们需要在测试一个三接口的dut，我们无需重写，只要从原来的trans里拓展出一个新trans就可以，如下</p>
+<pre><code class="language-verilog">class simpleadder_transaction_3inputs extends simpleadder_transaction;
+    rand bit[1:0] inc;//添加新接口inc
+ 
+     function new(string name = &quot;&quot;);
+          super.new(name);
+     endfunction: new
+ 
+     `uvm_object_utils_begin(simpleadder_transaction_3inputs)
+    `uvm_field_int(inc, UVM_ALL_ON)//注册新接口inc
+     `uvm_object_utils_end
+endclass: simpleadder_transaction_3inputs
+</code></pre>
+<h3 id="sequence">Sequence</h3>
+<p>创建了trans之后，就可以写一个由trans组成的sequence</p>
+<pre><code class="language-verilog">class simpleadder_sequence extends uvm_sequence#(simpleadder_transaction);//创建新类，调用之前设置好的trans
+     `uvm_object_utils(simpleadder_sequence)
+ 
+     function new(string name = &quot;&quot;);
+          super.new(name);
+     endfunction: new
+ 
+     task body();
+          simpleadder_transaction sa_tx;
+ 
+         repeat(15) begin//产生15个trans
+             sa_tx = simpleadder_transaction::type_id::create(...//使用create函数产生空白trans
+ 
+               start_item(sa_tx);
+                    assert(sa_tx.randomize());
+               finish_item(sa_tx);
+         end//随机化，start()和finish()函数分别是阻塞函数
+     endtask: body
+endclass: simpleadder_sequence
+</code></pre>
+<h3 id="sequencer">Sequencer</h3>
+<p>而sequencer则只需要一行很短的代码</p>
+<pre><code class="language-verilog">typedef uvm_sequencer#(simpleadder_transaction) simpleadder_sequencer;
+</code></pre>
+<p>这告诉UVM系统，只需要使用默认参数创建一个sequencer。</p>
+<p>至此，我们构建出了DUT、Interface、Sequencer</p>
+<figure data-type="image" tabindex="5"><img src="http://colorlesscube.com/wp-content/uploads/ch5-uvm_tb_simpleadder_sequencer.png" alt="State of the verification environment after the sequencer" loading="lazy"></figure>
+<p>但是仍有两个问题没有解决：</p>
+<ol>
+<li>sequence如何连接到sequencer</li>
+<li>sequencer如何连接到driver</li>
+</ol>
+<h2 id="五-driver">五、Driver</h2>
+<p>Driver是一个与Dut交互的元件，可以从上图看到driver从Sequencer中接受trans，在通过interface发送给dut。</p>
+<pre><code class="language-verilog">class simpleadder_driver extends uvm_driver#(simpleadder_transaction);
+    //The #(simpleadder_transaction) is a SystemVerilog parameter
+    //it represents the data type that it will be retrieved from the sequencer.
+    
+     `uvm_component_utils(simpleadder_driver)
+ 
+     //Interface declaration
+     protected virtual simpleadder_if vif;
+ 
+     function new(string name, uvm_component parent);
+          super.new(name, parent);
+     endfunction: new
+ 
+     function void build_phase(uvm_phase phase);
+          super.build_phase(phase);
+     void'(uvm_resource_db#(virtual simpleadder_if)::read_by_name(.scope(&quot;ifs&quot;), .name(&quot;simpleadder_if&quot;), .val(vif)));//gets the interface from the factory database
+     endfunction: build_phase
+ 
+     task run_phase(uvm_phase phase);
+          //Our code here
+     endtask: run_phase
+endclass: simpleadder_driver
+</code></pre>
+<p>run_phase()的任务就是根据前面的状态机写代码</p>
+<pre><code class="language-verilog">virtual task drive();
+    simpleadder_transaction sa_tx;
+    integer counter = 0, state = 0;
+    vif.sig_ina = 0'b0;
+    vif.sig_inb = 0'b0;
+    vif.sig_en_i = 1'b0;
+ 
+    forever begin
+        if(counter==0) begin
+            //Gets a transaction from the sequencer and
+            //stores it in the variable 'sa_tx'
+            seq_item_port.get_next_item(sa_tx);
+        end
+ 
+        @(posedge vif.sig_clock)
+        begin
+            if(counter==0) begin
+                vif.sig_en_i = 1'b1;
+                state = 1;
+            end
+ 
+            if(counter==1) begin
+                vif.sig_en_i = 1'b0;
+            end   
+ 
+            case(state)
+                1: begin
+                    vif.sig_ina = sa_tx.ina[1];
+                    vif.sig_inb = sa_tx.inb[1];
+ 
+                    sa_tx.ina = sa_tx.ina &lt;&lt; 1;
+                    sa_tx.inb = sa_tx.inb &lt;&lt; 1;
+ 
+                    counter = counter + 1;
+                    if(counter==2) state = 2;
+                end
+ 
+                2: begin
+                    vif.sig_ina = 1'b0;
+                    vif.sig_inb = 1'b0;
+                    counter = counter + 1;
+ 
+                    if(counter==6) begin
+                        counter = 0;
+                        state = 0;
+ 
+                        //Informs the sequencer that the
+                        //current operation with
+                        //the transaction was finished
+                        seq_item_port.item_done();
+                    end
+                end
+            endcase
+        end
+    end
+endtask: drive
+</code></pre>
+<p>关于virtual这个关键词可以展开说一下，不好排版，放在后面吧</p>
+<p><mark>关于uvm_resource_db这个机制，可以参考http://www.dvagent.com/forum.php?mod=viewthread&amp;tid=269，等有空了我再来整理</mark></p>
+<h3 id="virtual">virtual</h3>
+<ol>
+<li>
+<h5 id="virtual-interface">virtual interface</h5>
+<ul>
+<li>在interface定义时，如果不使用关键字 “virtual” 那么<mark>在多次调用该接口时，在其中的一个实例中对接口中某一信号的修改会影响其他实例接口</mark>；如果使用了 “virtual” 关键字，那么每个实例是独立的。</li>
+<li>习惯上在声明interface时均添加 &quot;virtual&quot;关键字。</li>
+</ul>
+</li>
+<li>
+<h5 id="virtual-taskfunction">virtual task/function</h5>
+<ul>
+<li>
+<p>用于OOP思想的继承使用。当定义了virtual时，==在子类中调用某task/function时，会先查找在子类中是否定义了该 task/function，如果子类没有定义，则在父类中查找。==未定义virtual时，只在子类中查找，没有定义就是编译器报错。</p>
+</li>
+<li>
+<p>如果某一class会被继承，则用户定义的task/function（除new()，randomized()，per_randomize()，pose_randomize()外），都应该加上virtual关键字，以备后续扩展。</p>
+</li>
+</ul>
+</li>
+<li>
+<h5 id="virtual-class">virtual class</h5>
+<ul>
+<li>
+<p>虚类一般用来定义类的格式,、类的成员、类的参数等，<mark>虚类不能被实例化</mark>，只能被扩展（重载）后实例化，用于在项目中定义一些标准的类。</p>
+</li>
+<li>
+<p>虚类中的方法通常使用关键字 &quot; pure virtual &quot; 纯虚方法。同时OOP规定，只要class中存在一个没有被实现的pure function，就不允许例化这个class。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="local-protected-static">local、protected、static</h3>
+<ol>
+<li>公有与私有
+<ul>
+<li>在SV中，所有成员默认都是 public 类型的，除非显示的使用关键字 <strong>local/protected</strong> 来声明。local与protected均可对方法或者属性进行修饰说明。</li>
+<li>local 表示的成员或方法只对该类的对象可见，扩展类以及类外不可见；</li>
+<li>protected 表示的成员或方法对该类<mark>以及扩展类可见</mark>，对类外不可见；</li>
+</ul>
+</li>
+<li>静态与全局</li>
+</ol>
+<h5 id="静态属性">静态属性</h5>
+<p>对于普通的实例类属性，每一个类实例的每一个变量都有自己的copy（单独的内存空间），相互独立。但是有时会要求一个类的所有实例都共享变量的一个版本，也就是说所有实例都共享同一个copy，该变量对所有实例都是可见并相同的。</p>
+<p>这样的类属性就是静态属性（静态变量），使用关键字<strong>static</strong>产生。通过下面的例子可以清楚的看见静态属性的特点。</p>
+<pre><code class="language-verilog">class Packet;
+  bit [15:0]   addr;
+  bit [7:0]   data;
+  static int   static_ctr = 0;//static
+       int   ctr = 0;
+ 
+  function new (bit [15:0] ad, bit [7:0] d);
+    addr = ad;
+    data = d;
+    static_ctr++;
+    ctr++;
+    $display (&quot;static_ctr=%0d ctr=%0d addr=0x%0h data=0x%0h&quot;, static_ctr, ctr, addr, data);
+  endfunction
+endclass
+ 
+module tb;
+  initial begin
+    Packet   p1, p2, p3;
+    p1 = new (16'hdead, 8'h12);
+    p2 = new (16'hface, 8'hab);
+    p3 = new (16'hcafe, 8'hfc);
+  end
+endmodule
+
+</code></pre>
+<pre><code class="language-verilog">ncsim&gt; run
+static_ctr=1 ctr=1 addr=0xdead data=0x12//可以看到ctr只在单次的new中产生
+static_ctr=2 ctr=1 addr=0xface data=0xab//而static_ctr则始终在计数
+static_ctr=3 ctr=1 addr=0xcafe data=0xfc
+ncsim: *W,RNQUIE: Simulation is complete.
+
+</code></pre>
+<p>静态属性还有一个重要的特点是<strong>其类无需实例化，就可直接使用静态属性</strong>。需要利用范围操作符::</p>
+<p>一个静态方法遵守所有的类范围和访问规则，<strong>但是它可以在类的外部被调用，即使没有该类的实例。外部调用的方法同样需要使用范围操作符::</strong>。</p>
+<h5 id="静态方法">静态方法</h5>
+<p>一个静态方法不能访问非静态的属性或方法，但是可以直接访问静态属性，或者调用同一个类中的静态方法，原因很简单因为静态属性和静态方法可以在类没有实例化时被调用，具有全局的静态生命周期，而普通的非静态成员无法做到这点。<br>
+在一个静态方法内部访问非静态成员或者使用this句柄都是非法的。<br>
+静态方法不能是虚拟的。</p>
+<pre><code class="language-verilog">class Packet;
+  static int ctr=0;
+ 
+   function new ();
+      ctr++;
+   endfunction
+ 
+  static function get_pkt_ctr ();
+    $display (&quot;ctr=%0d&quot;, ctr);
+  endfunction
+ 
+endclass
+ 
+module tb;
+  Packet pkt [6];
+  initial begin
+    for (int i = 0; i &lt; $size(pkt); i++) begin
+      pkt[i] = new;
+    end
+    Packet::get_pkt_ctr();   // Static call using :: operator
+    pkt[5].get_pkt_ctr();   // Normal call using instance
+  end
+endmodule
+
+</code></pre>
+<pre><code class="language-verilog">ncsim&gt; run
+ctr=6
+ctr=6
+ncsim: *W,RNQUIE: Simulation is complete.
+</code></pre>
+<p>可以看到，通过域操作符和使用实例中的函数，得到的结果是相同的，并且pkt[]的6个成员的调用结果都会是一样的（操作对象是只有一个copy的静态属性）。</p>
+<h2 id="六-monitor">六、Monitor</h2>
+<p>监视器是一个无源元件，它不会将任何信号驱动到 DUT 中，其目的是提取信号信息并将其转换为有意义的信息以供其他元件评估。</p>
+<p>监测器应包括：</p>
+<ul>
+<li>
+<p>遵守协议的 DUT 输出</p>
+</li>
+<li>
+<p>用于功能覆盖分析的 DUT 输入</p>
+</li>
+</ul>
+<p>在本例中，我们创建两个monitor，对两个输入进行采样，对预期结果进行预测并将其与 DUT 的结果进行比较：</p>
+<ul>
+<li>
+<p>第一个监视器 monitor_before 将只查找设备的输出并将结果传递给记分板。</p>
+</li>
+<li>
+<p>第二个监视器 monitor_after 将获得两个输入并对预期结果进行预测。记分板也会得到这个预测结果，并对两个值进行比较。</p>
+</li>
+</ul>
+<p>monitor_before</p>
+<pre><code class="language-verilog">class simpleadder_monitor_before extends uvm_monitor;
+     `uvm_component_utils(simpleadder_monitor_before)
+ 
+    uvm_analysis_port#(simpleadder_transaction) mon_ap_before;//
+ 
+     virtual simpleadder_if vif;
+ 
+     function new(string name, uvm_component parent);
+          super.new(name, parent);
+     endfunction: new
+ 
+     function void build_phase(uvm_phase phase);
+          super.build_phase(phase);
+ 
+          void'(uvm_resource_db#(virtual simpleadder_if)::read_by_name (.scope(&quot;ifs&quot;), .name(&quot;simpleadder_if&quot;), .val(vif)));
+          mon_ap_before = new(.name(&quot;mon_ap_before&quot;), .parent(this));
+     endfunction: build_phase
+ 
+     task run_phase(uvm_phase phase);
+          //Our code here
+     endtask: run_phase
+endclass: simpleadder_monitor_before
+</code></pre>
+<p>monitor_after</p>
+<pre><code class="language-verilog">class simpleadder_monitor_after extends uvm_monitor;
+     `uvm_component_utils(simpleadder_monitor_after)
+ 
+     uvm_analysis_port#(simpleadder_transaction) mon_ap_after;
+ 
+     virtual simpleadder_if vif;
+ 
+     simpleadder_transaction sa_tx_cg;
+ 
+     covergroup simpleadder_cg;
+          ina_cp:     coverpoint sa_tx_cg.ina;
+          inb_cp:     coverpoint sa_tx_cg.inb;
+          cross ina_cp, inb_cp;
+     endgroup: simpleadder_cg
+ 
+     function new(string name, uvm_component parent);
+          super.new(name, parent);
+          simpleadder_cg = new;
+     endfunction: new
+ 
+     function void build_phase(uvm_phase phase);
+          super.build_phase(phase);
+ 
+          void'(uvm_resource_db#(virtual simpleadder_if)::read_by_name(.scope(&quot;ifs&quot;), .name(&quot;simpleadder_if&quot;), .val(vif)));
+          mon_ap_after= new(.name(&quot;mon_ap_after&quot;), .parent(this));
+     endfunction: build_phase
+ 
+     task run_phase(uvm_phase phase);
+          //Our code here
+     endtask: run_phase
+endclass: simpleadder_monitor_after
+</code></pre>
+<h4 id="tlm-端口">TLM 端口</h4>
+<p>在讨论trans时，我们忽略了一个问题，就是其如何在各个元件中间流通，答案是通过端口。</p>
+<p>TLM 代表事务级建模（Transaction Level Modeling），它是一种对数字系统之间的通信进行建模的高级方法。这种方法主要体现在两个方面：端口和出口。</p>
+<figure data-type="image" tabindex="6"><img src="http://colorlesscube.com/wp-content/uploads/ch7-uvm_port_export.png" alt="Port-export communication" loading="lazy"></figure>
+<p>如上所示，consumer实现一个函数，该函数使用一个trans作为参数，而producer调用该函数，同时将作为参数的trans传递给consumer。top_class将这两个元件组合在一起。</p>
+<p>一个例子如下图</p>
+<img src="http://colorlesscube.com/wp-content/uploads/ch7-uvm_port_export_sample_code.jpeg" alt="Sample code for ports and exports" style="zoom:80%;" />
+<p>这张图中，top_class使用connect方法将consumer的端口连接到了productor的端口上</p>
+<figure data-type="image" tabindex="7"><img src="http://colorlesscube.com/wp-content/uploads/ch7-uvm_port_export_sumup.png" alt="Sum up of TLM-1.0 ports" loading="lazy"></figure>
+<p>而在port和export是一一对应的关系，而在需要一对多的时候，可以使用analysis port。</p>
+<figure data-type="image" tabindex="8"><img src="http://colorlesscube.com/wp-content/uploads/ch7-uvm_analysis_port_export.png" alt="Analysis port communication" loading="lazy"></figure>
+<h2 id="七-agent">七、Agent</h2>
+<p>在有了sequencer、driver 、monitor之后，下一步的任务是将它们链接起来，这一步由agent来完成。</p>
+<p>agent中没有run_phase，一个connect_phase取代了它。</p>
+<p>我们将在构建阶段构建monitor、sequencer、driver。我们还需要创建两个分析端口，这些端口将充当监视器的代理，以便通过代理端口连接到外部scoreboard。</p>
+<p><img src="http://colorlesscube.com/wp-content/uploads/ch8-uvm_tb_simpleadder_agent.png" alt="State of the testbench after the agent" loading="lazy"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动" loading="lazy"></p>
+<pre><code class="language-verilog">class simpleadder_agent extends uvm_agent;
+     `uvm_component_utils(simpleadder_agent)
+ 
+     //Analysis ports to connect the monitors to the scoreboard
+     uvm_analysis_port#(simpleadder_transaction) agent_ap_before;
+     uvm_analysis_port#(simpleadder_transaction) agent_ap_after;
+ 
+     simpleadder_sequencer        sa_seqr;
+     simpleadder_driver        sa_drvr;
+     simpleadder_monitor_before    sa_mon_before;
+     simpleadder_monitor_after    sa_mon_after;
+ 
+     function new(string name, uvm_component parent);
+          super.new(name, parent);
+     endfunction: new
+ 
+     function void build_phase(uvm_phase phase);
+          super.build_phase(phase);
+ 
+          agent_ap_before    = new(.name(&quot;agent_ap_before&quot;), .parent(this));
+          agent_ap_after    = new(.name(&quot;agent_ap_after&quot;), .parent(this));
+ 
+          sa_seqr        = simpleadder_sequencer::type_id::create(...
+          sa_drvr        = simpleadder_driver::type_id::create(...
+          sa_mon_before    = simpleadder_monitor_before::type_id::create(...
+          sa_mon_after    = simpleadder_monitor_after::type_id::create(...
+     endfunction: build_phase
+ 
+     function void connect_phase(uvm_phase phase);
+          super.connect_phase(phase);
+          sa_drvr.seq_item_port.connect(sa_seqr.seq_item_export);
+          sa_mon_before.mon_ap_before.connect(agent_ap_before);
+          sa_mon_after.mon_ap_after.connect(agent_ap_after);
+     endfunction: connect_phase
+endclass: simpleadder_agent
+</code></pre>
+<p>关于uvm_resource_db这个指令，有一个简单的例子，具体的应用应该还要再查书。</p>
+<blockquote>
+<p>以下将创建一个新资源，填充它并将其插入到资源池中。</p>
+<p>uvm_resource_db#（int）::set(&quot;roman&quot;,&quot;top.aa..*&quot;,2011,this);</p>
+<p>我们创建了一个名为“roman”的新资源，在“top.aa..*”标识的范围内可见，值为2011。</p>
+<p>检索此资源的组件将从数据库中读取值。</p>
+<p>if(!uvm_resource_db#（int）::read_by_name(&quot;roman&quot;,get_full_name(),value,this))</p>
+<p>`uvm_error(&quot;WRONG&quot;,&quot;在此范围内未找到资源&quot;);</p>
+<p>read_by_name() 返回一个指示查找是否成功的位。</p>
+<p>uvm_resource_db#（T）类是底层数据库访问类和方法之上的一个便利层。它没有被实例化。但包含一组操作资源和资源池的静态函数。</p>
+<p>https://forums.accellera.org/topic/305-uvm_resource_db-class-usage/</p>
+</blockquote>
+<h2 id="八-scoreboard">八、Scoreboard</h2>
+<p>scoreboard是关键一环，用于检测dut的功能是否正确，其编写是最重要的。</p>
+<p>在agent中，我们创建了两个监视器，因此，我们必须在记分板中创建两个analysis port，用于从两个监视器检索交易。之后，将在运行阶段执行一个方法 compare() 并比较两个事务。如果它们匹配，则意味着测试平台和 DUT 在功能上都一致，它将返回“OK”消息。</p>
+<p>但是我们有一个问题：我们有来自两个监视器的两个事务流，我们需要确保它们是同步的。这可以通过编写适当的 write() 函数来手动完成，但有一种更简单、更清晰的方法：使用 UVM FIFO。<mark>这个fifo要再去查一下</mark></p>
+<figure data-type="image" tabindex="9"><img src="http://colorlesscube.com/wp-content/uploads/ch9-uvm_tb_fifo.png" alt="Usage of FIFO in the scoreboard" loading="lazy"></figure>
+<p>FIFO 的实例化类似于端口/导出，使用 uvm_tlm_analysis_fifo #(generic_transaction) generic_fifo 并且它们已经实现了从监视器调用的相应 write() 函数。要访问它们的数据，我们只需从每个 FIFO 执行 get() 方法。</p>
+<pre><code class="language-verilog">class simpleadder_scoreboard extends uvm_scoreboard;
+     `uvm_component_utils(simpleadder_scoreboard)
+ 
+     uvm_analysis_export #(simpleadder_transaction) sb_export_before;
+     uvm_analysis_export #(simpleadder_transaction) sb_export_after;
+ 
+     uvm_tlm_analysis_fifo #(simpleadder_transaction) before_fifo;
+     uvm_tlm_analysis_fifo #(simpleadder_transaction) after_fifo;
+ 
+     simpleadder_transaction transaction_before;
+     simpleadder_transaction transaction_after;
+ 
+     function new(string name, uvm_component parent);
+          super.new(name, parent);
+          transaction_before    = new(&quot;transaction_before&quot;);
+          transaction_after    = new(&quot;transaction_after&quot;);
+     endfunction: new
+ 
+     function void build_phase(uvm_phase phase);
+          super.build_phase(phase);
+          sb_export_before    = new(&quot;sb_export_before&quot;, this);
+          sb_export_after        = new(&quot;sb_export_after&quot;, this);
+ 
+          before_fifo        = new(&quot;before_fifo&quot;, this);
+          after_fifo        = new(&quot;after_fifo&quot;, this);
+     endfunction: build_phase//build_phase和注册到底有什么区别，没搞懂
+ 
+     function void connect_phase(uvm_phase phase);
+          sb_export_before.connect(before_fifo.analysis_export);
+          sb_export_after.connect(after_fifo.analysis_export);
+     endfunction: connect_phase
+ 
+     task run();
+          forever begin
+               before_fifo.get(transaction_before);
+               after_fifo.get(transaction_after);
+               compare();
+          end
+     endtask: run
+ 
+     virtual function void compare();
+          if(transaction_before.out == transaction_after.out) begin
+               `uvm_info(&quot;compare&quot;, {&quot;Test: OK!&quot;}, UVM_LOW);
+          end else begin
+               `uvm_info(&quot;compare&quot;, {&quot;Test: Fail!&quot;}, UVM_LOW);
+          end
+     endfunction: compare
+endclass: simpleadder_scoreboard
+</code></pre>
+<h2 id="九-environment">九、Environment</h2>
+<p>env 是一个非常简单的类，它实例化代理和记分板并将它们连接在一起。</p>
+<pre><code class="language-verilog">class simpleadder_env extends uvm_env;
+     `uvm_component_utils(simpleadder_env)
+ 
+     simpleadder_agent sa_agent;
+     simpleadder_scoreboard sa_sb;
+ 
+     function new(string name, uvm_component parent);
+          super.new(name, parent);
+     endfunction: new
+ 
+     function void build_phase(uvm_phase phase);
+          super.build_phase(phase);
+          sa_agent    = simpleadder_agent::type_id::create(...
+          sa_sb        = simpleadder_scoreboard::type_id::create(...
+     endfunction: build_phase
+ 
+     function void connect_phase(uvm_phase phase);
+          super.connect_phase(phase);
+          sa_agent.agent_ap_before.connect(sa_sb.sb_export_before);
+          sa_agent.agent_ap_after.connect(sa_sb.sb_export_after);
+     endfunction: connect_phase
+endclass: simpleadder_env
+</code></pre>
+<h2 id="十-test">十、test</h2>
+<p>这个块将派生自 uvm_test 类，它有两个目的：</p>
+<ul>
+<li>
+<p>创建env</p>
+</li>
+<li>
+<p>将sequencer连接到sequence</p>
+</li>
+</ul>
+<p>在最顶层的test模块中连接sequencer和sequence有一个好处，就是我们可以轻松更改传输到 DUT 的数据类型，而不会弄乱agent或sequence的代码。<mark>但这我还不太理解</mark></p>
+<pre><code class="language-verilog">class simpleadder_test extends uvm_test;
+     `uvm_component_utils(simpleadder_test)
+ 
+     simpleadder_env sa_env;
+ 
+     function new(string name, uvm_component parent);
+          super.new(name, parent);
+     endfunction: new
+ 
+     function void build_phase(uvm_phase phase);
+          super.build_phase(phase);
+          sa_env = simpleadder_env::type_id::create(...
+     endfunction: build_phase
+ 
+     task run_phase(uvm_phase phase);
+          simpleadder_sequence sa_seq;
+ 
+          phase.raise_objection(.obj(this));
+               sa_seq = simpleadder_sequence::type_id::create(...
+               assert(sa_seq.randomize());
+               sa_seq.start(sa_env.sa_agent.sa_seqr);
+          phase.drop_objection(.obj(this));
+     endtask: run_phase
+endclass: simpleadder_test
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%B8%80-dut%E4%BB%8B%E7%BB%8D">一、DUT介绍</a></li>
+<li><a href="#%E4%BA%8C-%E9%AA%8C%E8%AF%81%E7%8E%AF%E5%A2%83">二、验证环境</a></li>
+<li><a href="#%E4%B8%89-top-block">三、Top block!</a></li>
+<li><a href="#%E5%9B%9B-sequences-and-sequencers">四、Sequences and sequencers</a>
+<ul>
+<li><a href="#transaction">transaction</a></li>
+<li><a href="#sequence">Sequence</a></li>
+<li><a href="#sequencer">Sequencer</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%94-driver">五、Driver</a>
+<ul>
+<li><a href="#virtual">virtual</a><br>
+*
+<ul>
+<li><a href="#virtual-interface">virtual interface</a></li>
+<li><a href="#virtual-taskfunction">virtual task/function</a></li>
+<li><a href="#virtual-class">virtual class</a></li>
+</ul>
+</li>
+<li><a href="#local-protected-static">local、protected、static</a><br>
+*
+<ul>
+<li><a href="#%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7">静态属性</a></li>
+<li><a href="#%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95">静态方法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%85%AD-monitor">六、Monitor</a><br>
+*
+<ul>
+<li><a href="#tlm-%E7%AB%AF%E5%8F%A3">TLM 端口</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%83-agent">七、Agent</a></li>
+<li><a href="#%E5%85%AB-scoreboard">八、Scoreboard</a></li>
+<li><a href="#%E4%B9%9D-environment">九、Environment</a></li>
+<li><a href="#%E5%8D%81-test">十、test</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://yuchenfei98.github.io/post/zong-jie/">
+              <h3 class="post-title">
+                总结
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Stand Alone Complex
+  <a class="rss" href="https://yuchenfei98.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
